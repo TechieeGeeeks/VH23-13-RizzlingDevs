@@ -117,6 +117,7 @@ const ViewCertificate = () => {
         logo={resUrl}
         hash={certificate._id}
       />
+      
       <button onClick={validateCertificateOnChain}>Validate Certificate</button>
     </>
   );

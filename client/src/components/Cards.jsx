@@ -3,6 +3,7 @@ import Lottie from "lottie-react";
 
 import Img from "../img/c1.svg";
 import StatusPopup from "./StatusPopUp";
+import { Link } from "react-router-dom";
 
 const Cards = ({
   duration,
@@ -43,7 +44,6 @@ const Cards = ({
   const handleCloseStatusPopup = () => {
     setStatusVisible(false);
   };
-  
 
   return (
     <div>
@@ -83,10 +83,10 @@ const Cards = ({
           )}
         </div>
         <StatusPopup
-            isVisible={isStatusVisible}
-            onClose={handleCloseStatusPopup}
-            status={statusMessage}
-          />
+          isVisible={isStatusVisible}
+          onClose={handleCloseStatusPopup}
+          status={statusMessage}
+        />
       </div>
 
       {/* for computer */}
@@ -132,7 +132,13 @@ const Cards = ({
                         isMinting ? "opacity-50 cursor-not-allowed" : ""
                       }`}
                     >
-                      {isMinting ? "Minting..." : "Mint Certificate"}
+                      {isMinting ? (
+                        "Minting..."
+                      ) : (
+                        <Link to="/certificate/create">
+                          <p>Minted</p>
+                        </Link>
+                      )}
                     </button>
                   ) : (
                     <button
