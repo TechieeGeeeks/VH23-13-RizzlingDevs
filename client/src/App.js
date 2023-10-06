@@ -8,7 +8,7 @@ import CertificateWithExport from "./components/Certificate";
 import Login from "./pages/Login";
 import RegisterNow from "./pages/RegisterNow";
 import Courses from "./components/Courses";
-import MintCertificate from "./components/MintCertificate";
+import Demo from "./components/Demo";
 
 
 function App() {
@@ -21,12 +21,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register-now" element={<RegisterNow />}/>
         <Route path="/courses" element={<Courses />}/>
-        <Route path="/certificate/create" element={<MintCertificate />}/>
+        {/* <Route path="/certificate/create" element={<MintCertificate />}/> */}
 
 
       </Routes>
+      {/* <Demo /> */}
       {/* <HeroSection />
        <CertificateWithExport className="Your Class Name" /> */}
+        <CertificateWithExport className="Your Class Name" /> 
     </div>
   );
 }
