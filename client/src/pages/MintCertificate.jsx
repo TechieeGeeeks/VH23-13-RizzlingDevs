@@ -31,7 +31,7 @@ const MintCertificate = () => {
     const json = await response.json();
     if (json.success) {
       alert("Swayam Karle Generated New Certificate check Console");
-      console.log("Name: ",json.certificate.candidateName, " Minted Certificcate with name : ",json.certificate.courseName);
+      console.log("Name: ",json.saveCertificate.candidateName, " Minted Certificcate with name : ",json.saveCertificate.courseName);
       
       console.log(`https://sepolia.etherscan.io/tx/${json.result_hash}`)
     } else {

@@ -83,7 +83,7 @@ const ViewCertificate = () => {
         const data = await response.json();
         //console.log("Is it working?",data);
         if (data.success) {
-          console.log("The Certificate holders name:", data.certificate.candidateName);
+          console.log("The Certificate holders name:", data.saveCertificate.candidateName);
           console.log("The Certificate holders id:", data.certificate._id);
           setCertificate({
             _id: data.certificate._id,
