@@ -57,9 +57,10 @@ router.post(
         duration,
         user: req.user.id,
       });
-      const saveCertificate = await temp_certificate.save();
-      await saveCredentialOnBlockchain(saveCertificate);
-      res.json(saveCertificate);
+      const certificate = await temp_certificate.save();
+      console.log(certificate);
+      const result_hash = await saveCredentialOnBlockchain(certificate);
+      res.json({certificate,success:true,result_hash});
     } catch (error) {
       console.error(error.message);
       return res.status(500).send("Some Eroor Occured");
@@ -126,7 +127,7 @@ const validateCertificateOnChain = async (certificate) => {
     courseName: certificate.courseName,
   };
 
-  const certificateDataOnChain = await contract.getData(certificate._id.toString()); 
+  const certificateDataOnChain = await contract.getData(certificate._id);
   const responseFromBlockchain = {
     candidateName: certificateDataOnChain[0],
     orgName: certificateDataOnChain[1],
@@ -135,8 +136,8 @@ const validateCertificateOnChain = async (certificate) => {
 
   if (
     JSON.stringify(responseFromBlockchain) === JSON.stringify(responseFromDB)
-    
   ) {
+    console.log("Certificate Verified On chain")
     return true;
   } else {
     return false;
