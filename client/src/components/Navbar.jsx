@@ -13,9 +13,12 @@ const Navbar = () => {
     <header>
       {/* Desk */}
       <div className="hidden md:flex justify-between">
-        <p className=" font-light text-xl cursor-pointer">
-          <span className=" font-bold">Linking</span>Blocks
-        </p>
+        <Link to="/">
+          <p className=" font-light text-xl cursor-pointer">
+            <span className=" font-bold">Linking</span>Blocks
+          </p>
+        </Link>
+
         <div className=" flex gap-6 ">
           {isLogin ? (
             <p className="  p-3 rounded hover:shadow-[5px_5px_0px_0px_#FF0000] hover:text-red-500 hover:border-red-500 cursor-pointer hover:border-2">
