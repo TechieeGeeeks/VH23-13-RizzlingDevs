@@ -4,11 +4,13 @@ import Cards from "./Cards";
 
 const Courses = () => {
   return (
-    <div>
+    <div className=" flex flex-col items-center justify-center">
       {courses &&
-        courses.map(({organization, certificateName, id}) => <div key={id}>
-            <Cards title={certificateName} organization={organization}/>
-            </div>)}
+        courses.map(({ organization, certificateName, id, subtitle, type, img }) => (
+          <div key={id}>
+            <Cards title={certificateName} organization={organization} subTitle={subtitle} type={type} img={img} />
+          </div>
+        ))}
     </div>
   );
 };
