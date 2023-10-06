@@ -2,7 +2,11 @@ import React from 'react'
 
 const MintCertificate = () => {
   return (
-    <div>MintCertificate</div>
+    <div>
+      <p>Name</p>
+      <p>Oraganization</p>
+      <p>title</p>
+    </div>
   )
 }
 

@@ -15,6 +15,7 @@ const Courses = () => {
             type,
             img,
             isCompleted,
+            duration,
           }) => (
             <div key={id}>
               <Cards
@@ -24,6 +25,7 @@ const Courses = () => {
                 type={type}
                 img={img}
                 isCompleted={isCompleted}
+                duration={duration}
               />
             </div>
           )

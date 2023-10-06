@@ -19,6 +19,7 @@ export const courses = [
     type: "Online",
     isCompleted: true,
     img: c1,
+    duration: 365,
   },
   {
     id: 2,
@@ -29,6 +30,7 @@ export const courses = [
     type: "Online",
     isCompleted: false,
     img: c2,
+    duration: 1095,
 
   },
   {
@@ -40,6 +42,7 @@ export const courses = [
     type: "Online",
     isCompleted: true,
     img: c3,
+    duration: 1095,
 
   },
   {
@@ -51,6 +54,7 @@ export const courses = [
     type: "Online",
     isCompleted: false,
     img: c4,
+    duration: 365,
 
   },
   {
@@ -62,6 +66,7 @@ export const courses = [
     type: "Online",
     isCompleted: true,
     img: c5,
+    duration: 365,
 
   },
   {
@@ -73,6 +78,7 @@ export const courses = [
     type: "Online",
     isCompleted: false,
     img: c6,
+    duration: 730,
 
   },
   {
@@ -84,6 +90,7 @@ export const courses = [
     type: "Online",
     isCompleted: false,
     img: c7,
+    duration: 365,
 
   },
   {
@@ -95,6 +102,7 @@ export const courses = [
     type: "Online",
     isCompleted: true,
     img: c8,
+    duration: 1095,
 
   },
 ];
