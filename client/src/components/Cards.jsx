@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Lottie from "lottie-react";
 
+import Img from "../img/c1.svg";
+import StatusPopup from "./StatusPopUp";
 
 const Cards = ({
   title,
@@ -11,6 +13,36 @@ const Cards = ({
   img,
   isCompleted,
 }) => {
+  const [isStatusVisible, setStatusVisible] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("");
+  const [isMinting, setIsMinting] = useState(false);
+
+  const handleCheckStatusClick = () => {
+    // Determine the status message based on the isCompleted property
+    const statusMessage = isCompleted
+      ? "Status: Completed"
+      : "Status: In Progress";
+
+    setStatusMessage(statusMessage);
+    setStatusVisible(true);
+  };
+
+  // const handleMintClick = () => {
+  //   // Perform minting logic here
+  //   setIsMinting(true);
+
+  //   // Simulate a delay (you can replace this with actual minting logic)
+  //   setTimeout(() => {
+  //     setIsMinting(false);
+  //     // Add logic to confirm minting success or failure
+  //     alert("Minting completed successfully!"); // Replace with your own UI feedback
+  //   }, 2000); // Simulated 2-second minting process
+  // };
+
+  const handleCloseStatusPopup = () => {
+    setStatusVisible(false);
+  };
+
   return (
     <div>
       {/* for mobile */}
@@ -29,16 +61,34 @@ const Cards = ({
         </div>
         <p className=" text-black font-light">Organization: {organization}</p>
         <p className=" text-justify text-gray-500 mt-6">{subTitle}</p>
-        <div className="  mt-4">
-          <button className="w-full bg-purpleColor p-2 rounded text-white ">
-            Check Status
-          </button>
+        <div className="mt-4">
+          {isCompleted ? (
+            <button
+              className={`w-full bg-purpleColor p-2 rounded text-white ${
+                isMinting ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              {isMinting ? "Minting..." : "Mint Certificate"}
+            </button>
+          ) : (
+            <button
+              onClick={handleCheckStatusClick}
+              className="w-full bg-purpleColor p-2 rounded text-white "
+            >
+              Check Status
+            </button>
+          )}
         </div>
+        <StatusPopup
+            isVisible={isStatusVisible}
+            onClose={handleCloseStatusPopup}
+            status={statusMessage}
+          />
       </div>
 
       {/* for computer */}
       <div className="hidden md:flex mt-8 border-2 shadow-[5px_5px_0px_0px_rgba(109,40,217)] border-purpleColor rounded-lg mx-24">
-        <div className=" flex-1 bg-white rounded-lg p-8">
+        <div className=" flex-1 justify-center items-center bg-white rounded-lg p-8">
           <div className="flex gap-12 items-center justify-center ">
             <div className="w-20 md:w-[15%] mb-3 rounded-full overflow-hidden object-cover py-6">
               <img src={img} className=" " />
@@ -67,14 +117,32 @@ const Cards = ({
                 <p className=" text-gray-500 text-sm mt-3 w-[70%]">
                   {subTitle}
                 </p>
-                <div>
-                  <button className=" hover:bg-purpleColor hover:text-white border-2 border-purpleColor p-2 rounded-lg  ">
-                    Check Status
-                  </button>
+                <div className="mt-4">
+                  {isCompleted ? (
+                    <button
+                      className={`w-full bg-purpleColor p-2 rounded text-white ${
+                        isMinting ? "opacity-50 cursor-not-allowed" : ""
+                      }`}
+                    >
+                      {isMinting ? "Minting..." : "Mint Certificate"}
+                    </button>
+                  ) : (
+                    <button
+                      onClick={handleCheckStatusClick}
+                      className="w-full bg-purpleColor p-2 rounded text-white "
+                    >
+                      Check Status
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
-          </div>
+          </div>{" "}
+          <StatusPopup
+            isVisible={isStatusVisible}
+            onClose={handleCloseStatusPopup}
+            status={statusMessage}
+          />
         </div>
       </div>
     </div>
