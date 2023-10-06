@@ -8,7 +8,7 @@ export const InputContext = createContext();
 
 const ViewCertificate = () => {
   const host = `https://linkedblocks.onrender.com`;
-  const locaHostClient=`http://localhost:3000`
+  const locaHostClient=`https://linkedblocks.vercel.app`
   const { id } = useParams();
   const [response, setResponse] = useState("");
   const[resUrl,setResUrl]=useState("");
@@ -108,7 +108,7 @@ const ViewCertificate = () => {
     getCertificate();
     console.log(certificate);
     return () => {};
-  }, []);
+  }, [certificate]);
 
   return (
     <>
