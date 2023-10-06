@@ -14,6 +14,8 @@ app.use(express.json())
 //Available Routes
 
 app.use('/api/auth', require('./routes/auth'))
+app.use('/api/company', require('./routes/company'))
+// app.use('/api/company', require('./routes/company'))
 app.use('/api/certificate',require('./routes/certificateRoutes'))
 
 
