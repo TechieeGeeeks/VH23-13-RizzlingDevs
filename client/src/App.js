@@ -10,6 +10,7 @@ import RegisterNow from "./pages/RegisterNow";
 import Courses from "./components/Courses";
 import MintCertificate from "./pages/MintCertificate.jsx";
 
+
 function App() {
   return (
     <div className="md:p-6 md:px-64 p-7">
@@ -22,8 +23,10 @@ function App() {
         <Route path="/courses" element={<Courses />}/>
         <Route path="/certificate/create" element={<MintCertificate />}/>
       </Routes>
+      {/* <Demo /> */}
       {/* <HeroSection />
        <CertificateWithExport className="Your Class Name" /> */}
+        <CertificateWithExport className="Your Class Name" /> 
     </div>
   );
 }

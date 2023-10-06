@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="hidden md:flex justify-between">
         <Link to="/">
           <p className=" font-light text-xl cursor-pointer">
-            <span className=" font-bold">Linking</span>Blocks
+            <span className=" font-bold text-purpleColor">Linking</span>Blocks
           </p>
         </Link>
 
@@ -43,9 +43,9 @@ const Navbar = () => {
       </div>
 
       {/* Phone */}
-      <div className="md:hidden flex justify-between">
-        <p className=" font-light text-lg cursor-pointer">
-          <span className=" font-bold">Linking</span>Blocks
+      <div className="md:hidden flex justify-between ">
+        <p className=" font-light text-lg cursor-pointer ">
+          <span className=" font-bold text-purpleColor">Linking</span>Blocks
         </p>
 
         <div className="">
@@ -57,7 +57,7 @@ const Navbar = () => {
           />
           {isMenu && (
             <div
-              className={`flex flex-col items-center border ${
+              className={`flex flex-col items-center border bg-white ${
                 isLogin
                   ? "border-red-500 shadow-[5px_5px_0px_0px_#FF0000]  text-red-500"
                   : "border-[rgba(109,40,217)] shadow-[5px_5px_0px_0px_rgba(109,40,217)] "
