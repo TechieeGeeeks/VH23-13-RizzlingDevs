@@ -1,11 +1,41 @@
 import React, { useState } from "react";
 import { courses } from "../utils/data";
+import { useNavigate } from "react-router";
 
 const MintCertificate = () => {
+  const localHost = "http://localhost:8080";
+  let navigate = useNavigate();
   const [candidateName, setCandidateName] = useState("");
   const [course, setCourse] = useState(null);
   const [expiryDate, setexpiryDate] = useState(365);
   const [organizationName, setorganizationName] = useState(null)
+
+  const mintCertificateOnChain = async() => {
+    const token = localStorage.getItem('token').toString();
+    const response = await fetch(`${localHost}/api/certificate/createcertificate`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token
+      },
+      body: JSON.stringify({
+        candidateName:candidateName,
+        orgName:organizationName,
+        courseName:course,
+        duration:expiryDate
+    }),
+    });
+    console.log(response)
+    const json = await response.json();
+    if (json.success) {
+      alert("Swayam Karle Generated New Certificate check Console");
+      console.log("Name: ",json.certificate.candidateName, " Minted Certificcate with name : ",json.certificate.courseName);
+      
+      console.log(`https://sepolia.etherscan.io/tx/${json.result_hash}`)
+    } else {
+      alert("Login with proper credentials")
+    }
+  };
 
   return (
     <div className="w-full flex flex-col gap-8 items-center justify-center md:mt-36 mt-12">
@@ -43,7 +73,7 @@ const MintCertificate = () => {
 
         <div className="w-full">
           <select
-            onChange={(e) => setCourse(e.target.value)}
+            onChange={(e) => setorganizationName(e.target.value)}
             className="outline-none w-full text-base border-b border-gray-200 p-2 rounded-md cursor-pointer"
           >
             <option value="other" className="bg-white">
@@ -87,6 +117,7 @@ const MintCertificate = () => {
           <button
             type="button"
             className=" ml-0 border border-black bg-purpleColor text-white  md:ml-auto w-full md:w-auto border-none outline-none bg-lightBlue px-12 py-2 rounded-lg text-lg font-semibold"
+            onClick={mintCertificateOnChain}
           >
             Mint Certificate
           </button>

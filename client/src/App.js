@@ -9,6 +9,7 @@ import MintCertificate from "./pages/MintCertificate.jsx";
 import { useState } from "react";
 
 import ViewCertificate from "./pages/ViewCertificate";
+import UserRoute from "./components/userRoute";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -24,8 +25,8 @@ function App() {
           path="/register-now"
           element={<RegisterNow setIsLogin={setIsLogin} />}
         />
-        <Route path="/user_dashboard" element={<Courses />} />
-        <Route path="/certificate/create" element={<MintCertificate />} />
+        <Route path="/user_dashboard" element={<UserRoute><Courses/></UserRoute>} />
+        <Route path="/certificate/create" element={<UserRoute><MintCertificate /></UserRoute>} />
         <Route path="/certificate/view/:id" element={<ViewCertificate />} />
       </Routes>
      </div>
