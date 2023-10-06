@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { courses } from "../utils/data";
+import Lottie from "lottie-react";
+import mint from "../img/mint.json"
 
 const MintCertificate = () => {
   const [candidateName, setCandidateName] = useState("");
@@ -20,6 +22,10 @@ const MintCertificate = () => {
           className="w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor"
         />
       </div> */}
+      <Lottie
+          animationData={mint}
+          className="border md:border-none border-dotted border-purpleColor border-2 bg-white md:bg-transparent rounded-lg"
+        />
         <div className="w-full">
           <select
             onChange={(e) => setCourse(e.target.value)}
