@@ -85,7 +85,7 @@ router.get("/validatecertificate/:id", async (req, res) => {
     const certificate = await Certificate.findById(req.params.id);
     const isTrue = await validateCertificateOnChain(certificate);
     if (isTrue) {
-      res.status(200).json({sucess:true,certificate})
+      res.status(200).json({success:true,certificate})
     } else {
       res.json("Certificate is Corrupt or Expired");
     }
@@ -137,6 +137,7 @@ const validateCertificateOnChain = async (certificate) => {
   if (
     JSON.stringify(responseFromBlockchain) === JSON.stringify(responseFromDB)
   ) {
+    console.log("Certificate Verified On chain")
     return true;
   } else {
     return false;
