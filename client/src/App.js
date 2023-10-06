@@ -10,6 +10,7 @@ import { useState } from "react";
 import ImageHasher from "./pages/ImageHasher"
 
 import ViewCertificate from "./pages/ViewCertificate";
+import UserRoute from "./components/userRoute";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -25,6 +26,8 @@ function App() {
           path="/register-now"
           element={<RegisterNow setIsLogin={setIsLogin} />}
         />
+        <Route path="/user_dashboard" element={<UserRoute><Courses/></UserRoute>} />
+        <Route path="/certificate/create" element={<UserRoute><MintCertificate /></UserRoute>} />
         <Route path="/user_dashboard" element={<Courses />} />
         <Route path="/image_hasher" element={<ImageHasher />} />
         <Route path="/certificate/create" element={<MintCertificate />} />

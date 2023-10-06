@@ -57,10 +57,10 @@ router.post(
         duration,
         user: req.user.id,
       });
-      const saveCertificate = await temp_certificate.save();
-      console.log(saveCertificate);
-      await saveCredentialOnBlockchain(saveCertificate);
-      res.json(saveCertificate);
+      const certificate = await temp_certificate.save();
+      console.log(certificate);
+      const result_hash = await saveCredentialOnBlockchain(certificate);
+      res.json({certificate,success:true,result_hash});
     } catch (error) {
       console.error(error.message);
       return res.status(500).send("Some Eroor Occured");
