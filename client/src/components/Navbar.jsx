@@ -75,10 +75,11 @@ const Navbar = ({isLogin,setIsLogin}) => {
                 <p className="w-full text-center px-2 ">Logout</p>
               ) : (
                 <div className="flex flex-col items-center">
-                  <p className="w-full text-center px-2 border border-b-2 border-[rgba(109,40,217)] border-t-0 border-x-0">
+                  <Link to='/register-now'><p className="w-full text-center px-2 border border-b-2 border-[rgba(109,40,217)] border-t-0 border-x-0">
                     Register Now
-                  </p>
-                  <p className="w-full text-center px-2">Login</p>
+                  </p></Link>
+                  <Link to='/login'>
+                  <p className="w-full text-center px-2">Login</p></Link>
                 </div>
               )}
             </div>

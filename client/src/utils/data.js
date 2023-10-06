@@ -1,89 +1,100 @@
 
-import Img from '../img/1.png'
-import Img2 from '../img/2.jpg'
-
+import c1 from '../img/c1.svg'
+import c2 from '../img/c2.svg'
+import c3 from '../img/c3.svg'
+import c4 from '../img/c4.svg'
+import c5 from '../img/c5.svg'
+import c6 from '../img/c6.svg'
+import c7 from '../img/c7.svg'
+import c8 from '../img/c8.svg'
 
 
 export const courses = [
   {
     id: 1,
-    organization: "The Graph",
-    certificateName: "Lorem Ipsum",
+    organization: "Ethereum",
+    certificateName: "What is Ethereum?",
     subtitle:
-      "jkVDSB HG VCghBJVDSZYKUHSCJ khgvschgKJYCGTS MSCDBGVkjdsbvuBHJHCBS H isjbc j csjb bh  JHBSCA  aCB asCSKJ B kjaxnhoIShubj",
+      "If you are new, start here to learn why Ethereum matters.",
     type: "Online",
     isCompleted: true,
-    img: Img,
+    img: c1,
   },
   {
     id: 2,
-    organization: "The Graph",
-    certificateName: "Lorem Ipsum",
+    organization: "Solana",
+    certificateName: "Solana Development Course",
     subtitle:
-      "jkVDSB HG VCghBJVDSZYKUHSCJ khgvschgKJYCGTS MSCDBGVkjdsbvuBHJHCBS H isjbc j csjb bh  JHBSCA  aCB asCSKJ B kjaxnhoIShubj",
+      "Quickstart your Solana Development starting from nothing to complex programs",
     type: "Online",
     isCompleted: false,
-    img: Img2,
+    img: c2,
 
   },
   {
     id: 3,
     organization: "The Graph",
-    certificateName: "Lorem Ipsum",
+    certificateName: "Navigating Web3 with The Graph India",
     subtitle:
-      "jkVDSB HG VCghBJVDSZYKUHSCJ khgvschgKJYCGTS MSCDBGVkjdsbvuBHJHCBS H isjbc j csjb bh  JHBSCA  aCB asCSKJ B kjaxnhoIShubj",
+      "The Graph is a decentralized protocol that is designed for indexing and querying blockchain data, making it possible to query data that is difficult to query directly.",
     type: "Online",
     isCompleted: true,
+    img: c3,
 
   },
   {
     id: 4,
-    organization: "The Graph",
-    certificateName: "Lorem Ipsum",
+    organization: "Ethereum",
+    certificateName: "What is ETH?",
     subtitle:
-      "jkVDSB HG VCghBJVDSZYKUHSCJ khgvschgKJYCGTS MSCDBGVkjdsbvuBHJHCBS H isjbc j csjb bh  JHBSCA  aCB asCSKJ B kjaxnhoIShubj",
+      "Ether (ETH) is the currency powering the Ethereum network and apps.",
     type: "Online",
     isCompleted: false,
+    img: c4,
 
   },
   {
     id: 5,
-    organization: "The Graph",
-    certificateName: "Lorem Ipsum",
+    organization: "Ethereum",
+    certificateName: "What is Web3?",
     subtitle:
-      "jkVDSB HG VCghBJVDSZYKUHSCJ khgvschgKJYCGTS MSCDBGVkjdsbvuBHJHCBS H isjbc j csjb bh  JHBSCA  aCB asCSKJ B kjaxnhoIShubj",
+      "Web3 is a model for the internet valuing ownership of your assets and identity.",
     type: "Online",
     isCompleted: true,
+    img: c5,
 
   },
   {
     id: 6,
-    organization: "The Graph",
-    certificateName: "Lorem Ipsum",
+    organization: "Google Cloud Foundations",
+    certificateName: "Google Cloud Computing Fundamentals",
     subtitle:
-      "jkVDSB HG VCghBJVDSZYKUHSCJ khgvschgKJYCGTS MSCDBGVkjdsbvuBHJHCBS H isjbc j csjb bh  JHBSCA  aCB asCSKJ B kjaxnhoIShubj",
+      "The Google Cloud Computing Foundations courses are for individuals with little to no background or experience in cloud computing.",
     type: "Online",
     isCompleted: false,
+    img: c6,
 
   },
   {
     id: 7,
     organization: "The Graph",
-    certificateName: "Lorem Ipsum",
+    certificateName: "What is deep learning?",
     subtitle:
-      "jkVDSB HG VCghBJVDSZYKUHSCJ khgvschgKJYCGTS MSCDBGVkjdsbvuBHJHCBS H isjbc j csjb bh  JHBSCA  aCB asCSKJ B kjaxnhoIShubj",
+      "Deep learning is a subset of machine learning, which is essentially a neural network with three or more layers.",
     type: "Online",
     isCompleted: false,
+    img: c7,
 
   },
   {
     id: 8,
-    organization: "The Graph",
-    certificateName: "Lorem Ipsum",
+    organization: "Udemy",
+    certificateName: "Natural Language Processing with Python",
     subtitle:
-      "jkVDSB HG VCghBJVDSZYKUHSCJ khgvschgKJYCGTS MSCDBGVkjdsbvuBHJHCBS H isjbc j csjb bh  JHBSCA  aCB asCSKJ B kjaxnhoIShubj",
+      "Learn to use Machine Learning, Spacy, NLTK, SciKit-Learn, Deep Learning, and more to conduct Natural Language Processing.",
     type: "Online",
     isCompleted: true,
+    img: c8,
 
   },
 ];

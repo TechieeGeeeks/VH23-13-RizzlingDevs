@@ -36,10 +36,10 @@ const Login = ({setIsLogin}) => {
   };
 
   return (
-    <div className="w-full flex flex-col gap-8 items-center justify-center mt-36">
+    <div className="w-full flex flex-col gap-8 items-center justify-center md:mt-36 mt-12">
       <div className="w-[90%] md:w-[50%] border-2 border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)] rounded-lg p-4 flex flex-col items-center justify-center gap-4">
-        <div className="group flex justify-center items-center flex-col border-2 border-dotted border-gray-300 w-full h-225 md:h-340 cursor-pointer rounded-full overflow-hidden">
-          <Lottie animationData={login} />
+        <div className="group flex justify-center items-center flex-col border-2 border-dotted border-gray-300 w-full h-225 md:h-340 cursor-pointer rounded-lg overflow-hidden">
+         <Lottie animationData={login}/>
         </div>
 
         {/* <div className="w-full py-2 border-b border-gray-300 flex items-center gap-2">
