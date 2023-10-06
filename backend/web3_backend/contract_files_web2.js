@@ -1,4 +1,4 @@
- const HashContract_Address="0x8940734897493836FEC212F9e690c1Ff72653012";
+ const HashContract_Address="0x095A56b0B4839a70240Cbe39bC381412318E013E";
 
  const HashcontractAbi=[
 	{

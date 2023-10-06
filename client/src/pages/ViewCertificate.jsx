@@ -40,7 +40,7 @@ const ViewCertificate = () => {
 
 
   const config = {
-    headers: { Authorization: "Bearer 2b9fc920-6474-11ee-94e7-6f0371f0cbd4" },
+    headers: { Authorization: "Bearer 2b38fc30-6420-11ee-a74e-41d810857b10" },
   };
   const bodyParameters = {
     colorDark: '#000000',
@@ -81,7 +81,7 @@ const ViewCertificate = () => {
           method: "GET",
         });
         const data = await response.json();
-        //console.log("Is it working?",data);
+        console.log(data);
         if (data.success) {
           console.log("The Certificate holders name:", data.saveCertificate.candidateName);
           console.log("The Certificate holders id:", data.certificate._id);
@@ -93,7 +93,6 @@ const ViewCertificate = () => {
             courseName: data.certificate.courseName,
             duration: data.certificate.duration,
           });
-          alert("Certificate verified on chain")
         }
         // Now you can use the 'data' object as needed in your application.
       } catch (error) {
