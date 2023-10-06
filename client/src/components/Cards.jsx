@@ -43,6 +43,7 @@ const Cards = ({
   const handleCloseStatusPopup = () => {
     setStatusVisible(false);
   };
+  
 
   return (
     <div>
