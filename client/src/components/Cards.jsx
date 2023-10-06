@@ -61,6 +61,7 @@ const Cards = ({
           </div>
         </div>
         <p className=" text-black font-light">Organization: {organization}</p>
+        <p className=" text-black font-light">Duration: {duration} Days</p>
         <p className=" text-justify text-gray-500 mt-6">{subTitle}</p>
         <div className="mt-4">
           {isCompleted ? (
