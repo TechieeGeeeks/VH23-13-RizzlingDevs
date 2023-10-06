@@ -136,7 +136,7 @@ const Cards = ({
                         "Minting..."
                       ) : (
                         <Link to="/certificate/create">
-                          <p>Minted</p>
+                          <p>Mint Certificate</p>
                         </Link>
                       )}
                     </button>
