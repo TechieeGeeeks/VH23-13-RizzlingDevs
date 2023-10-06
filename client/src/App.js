@@ -8,7 +8,6 @@ import CertificateWithExport from "./components/Certificate";
 import Login from "./pages/Login";
 import RegisterNow from "./pages/RegisterNow";
 
-
 function App() {
   return (
     <div className="md:p-6 md:px-64 p-7">
