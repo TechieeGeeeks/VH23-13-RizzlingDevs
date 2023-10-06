@@ -7,8 +7,6 @@ import Tick from "../img/tick.json";
 const Login = ({ setIsLogin }) => {
   const localHost = "http://localhost:8080";
   let navigate = useNavigate();
-  const [imageAsset, setimageAsset] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [email, setemail] = useState("");
   const [password, setpassword] = useState(null);
   const [tempLogInCheck, setTempLogInCheck] = useState(false);
@@ -59,37 +57,42 @@ const Login = ({ setIsLogin }) => {
           )}
         </div>
 
-       {tempLogInCheck ? (<div></div>) : (<div className=" w-full"> <div className="w-full py-2 border-b border-gray-300 flex items-center gap-2">
-          <input
-            type="text"
-            required
-            value={email}
-            onChange={(e) => setemail(e.target.value)}
-            placeholder="Enter Email"
-            className="w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor"
-          />
-        </div>
-
-        <div className="w-full py-2 border-b border-gray-300 flex items-center gap-2">
-          <input
-            type="text"
-            required
-            value={password}
-            onChange={(e) => setpassword(e.target.value)}
-            placeholder="Password"
-            className="w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor"
-          />
-        </div>
-
-        <div className="flex items-center w-full">
-          <button
-            type="button"
-            className="ml-0 mt-4 border border-black bg-purpleColor text-white  md:ml-auto w-full md:w-auto border-none outline-none bg-lightBlue px-12 py-2 rounded-lg text-lg font-semibold"
-            onClick={handleLogin}
-          >
-            Login
-          </button>
-        </div></div>)}
+        {tempLogInCheck ? (
+          <div></div>
+        ) : (
+          <div className=" w-full">
+            {" "}
+            <div className="w-full py-2 border-b border-gray-300 flex items-center gap-2">
+              <input
+                type="text"
+                required
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
+                placeholder="Enter Email"
+                className="w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor"
+              />
+            </div>
+            <div className="w-full py-2 border-b border-gray-300 flex items-center gap-2">
+              <input
+                type="text"
+                required
+                value={password}
+                onChange={(e) => setpassword(e.target.value)}
+                placeholder="Password"
+                className="w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor"
+              />
+            </div>
+            <div className="flex items-center w-full">
+              <button
+                type="button"
+                className="ml-0 mt-4 border border-black bg-purpleColor text-white  md:ml-auto w-full md:w-auto border-none outline-none bg-lightBlue px-12 py-2 rounded-lg text-lg font-semibold"
+                onClick={handleLogin}
+              >
+                Login
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
