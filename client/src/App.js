@@ -68,7 +68,7 @@ function App() {
       <Routes>
         <Route path="/*" element={<HeroSection />} />
         <Route path="/login" element={<Login setIsLogin={setIsLogin}/>} />
-        <Route path="/register-now" element={<RegisterNow />} />
+        <Route path="/register-now" element={<RegisterNow setIsLogin={setIsLogin} />} />
         <Route path="/user_dashboard" element={<Courses />} />
         <Route path="/certificate/create" element={<MintCertificate />} />
       </Routes>
