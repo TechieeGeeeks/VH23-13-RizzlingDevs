@@ -2,8 +2,6 @@ import React from "react";
 import { useState, useEffect, createContext } from "react";
 import { useParams } from "react-router-dom";
 import Demo from "../components/Demo";
-import InputForm from "../components/qr-generation/InputForm";
-import QrCode from "../components/qr-generation/QrCode";
 import axios from "axios";
 export const InputContext = createContext();
 
@@ -76,6 +74,34 @@ const ViewCertificate = () => {
       // Handle the error as needed, e.g., display an error message to the user.
     }
   };
+
+    const validateCertificateOnChain = async()=>{
+      try {
+        const response = await fetch(`${localHost}/api/certificate/validatecertificate/${id}`, {
+          method: "GET",
+        });
+        const data = await response.json();
+        console.log(data);
+        if (data.success) {
+          console.log("The Certificate holders name:", data.certificate.candidateName);
+          console.log("The Certificate holders id:", data.certificate._id);
+          setCertificate({
+            _id: data.certificate._id,
+            user: data.certificate.user,
+            candidateName: data.certificate.candidateName,
+            orgName: data.certificate.orgName,
+            courseName: data.certificate.courseName,
+            duration: data.certificate.duration,
+          });
+        }
+        // Now you can use the 'data' object as needed in your application.
+      } catch (error) {
+        console.error("Error:", error.message);
+        // Handle the error as needed, e.g., display an error message to the user.
+      }
+    }
+
+
   useEffect(() => {
     getCertificate();
     console.log(certificate);
@@ -91,6 +117,7 @@ const ViewCertificate = () => {
         logo={resUrl}
         hash={certificate._id}
       />
+      <button onClick={validateCertificateOnChain}>Validate Certificate</button>
     </>
   );
 };
