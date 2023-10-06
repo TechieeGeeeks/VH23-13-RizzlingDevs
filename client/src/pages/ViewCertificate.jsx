@@ -40,7 +40,7 @@ const ViewCertificate = () => {
 
 
   const config = {
-    headers: { Authorization: "Bearer 2b38fc30-6420-11ee-a74e-41d810857b10" },
+    headers: { Authorization: "Bearer 6a5c95d0-6483-11ee-b157-c946b9aced4f" },
   };
   const bodyParameters = {
     colorDark: '#000000',
@@ -83,8 +83,9 @@ const ViewCertificate = () => {
         const data = await response.json();
         console.log(data);
         if (data.success) {
-          console.log("The Certificate holders name:", data.saveCertificate.candidateName);
-          console.log("The Certificate holders id:", data.certificate._id);
+          //console.log("The Certificate holders name:", data.saveCertificate.candidateName);
+          //console.log("The Certificate holders id:", data.saveCertificate._id);
+          console.log(data);
           setCertificate({
             _id: data.certificate._id,
             user: data.certificate.user,
@@ -93,6 +94,7 @@ const ViewCertificate = () => {
             courseName: data.certificate.courseName,
             duration: data.certificate.duration,
           });
+          alert("Hogaya")
         }
         // Now you can use the 'data' object as needed in your application.
       } catch (error) {
