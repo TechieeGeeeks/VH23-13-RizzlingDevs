@@ -1,7 +1,7 @@
 import React from "react";
 import Lottie from "lottie-react";
 
-import Img from '../img/1.png'
+import Img from '../img/c1.svg'
 
 const Cards = ({
   title,
