@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class ImageHasher extends React.Component {
+class ImageHasher extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hashResults: [],
+    };
+  }
+
   async hashImage(file) {
     const buffer = await file.arrayBuffer();
     const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
@@ -19,13 +26,33 @@ class ImageHasher extends React.Component {
       hashResults.push({ filename: file.name, hash });
     }
 
-    console.log(hashResults);
+    this.setState({ hashResults });
   };
 
   render() {
     return (
-      <div>
-        <input type="file" id="fileInput" accept="image/*" multiple onChange={this.handleFileChange} />
+      <div className="w-[90%] md:w-[50%] border-2 border-[rgba(109,40,217)] shadow-[5px_5px_0px_0px_rgba(109,40,217)] rounded-lg p-4 flex flex-col items-center justify-center gap-4">
+        <h2 className="text-2xl font-semibold mb-4">Upload your Certificates here..</h2>
+        <label
+          className="block py-2 px-4 bg-black text-white rounded-md cursor-pointer hover:bg-purpleColor"
+          htmlFor="fileInput"
+        >
+          Choose File(s)
+        </label>
+        <input
+          type="file"
+          id="fileInput"
+          multiple
+          className="hidden"
+          onChange={this.handleFileChange}
+        />
+        <ul className="mt-4">
+          {this.state.hashResults.map((result, index) => (
+            <li key={index} className="text-lg mb-2">
+              <strong>{result.filename}:</strong> {result.hash}
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
