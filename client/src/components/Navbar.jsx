@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   const [isMenu, setIsMenu] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
@@ -21,12 +23,17 @@ const Navbar = () => {
             </p>
           ) : (
             <div className=" flex gap-6">
-              <p className="  p-3 rounded hover:shadow-[5px_5px_0px_0px_rgba(109,40,217)] hover:border-purpleColor cursor-pointer hover:border-2">
-                Register Now
-              </p>
-              <p className="  p-3 rounded hover:shadow-[5px_5px_0px_0px_rgba(109,40,217)] hover:border-purpleColor cursor-pointer hover:border-2">
-                Login
-              </p>
+              <Link to="/register-now">
+                <p className="  p-3 rounded hover:shadow-[5px_5px_0px_0px_rgba(109,40,217)] hover:border-purpleColor cursor-pointer hover:border-2">
+                  Register Now
+                </p>
+              </Link>
+
+              <Link to="/login">
+                <p className="  p-3 rounded hover:shadow-[5px_5px_0px_0px_rgba(109,40,217)] hover:border-purpleColor cursor-pointer hover:border-2">
+                  Login
+                </p>
+              </Link>
             </div>
           )}
         </div>
@@ -48,7 +55,9 @@ const Navbar = () => {
           {isMenu && (
             <div
               className={`flex flex-col items-center border ${
-                isLogin ? "border-red-500 shadow-[5px_5px_0px_0px_#FF0000]  text-red-500" : "border-[rgba(109,40,217)] shadow-[5px_5px_0px_0px_rgba(109,40,217)] "
+                isLogin
+                  ? "border-red-500 shadow-[5px_5px_0px_0px_#FF0000]  text-red-500"
+                  : "border-[rgba(109,40,217)] shadow-[5px_5px_0px_0px_rgba(109,40,217)] "
               } rounded absolute py-1 right-8 top-16 `}
             >
               {isLogin ? (
