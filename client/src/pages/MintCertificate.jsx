@@ -5,7 +5,7 @@ import Lottie from "lottie-react";
 import mint from "../img/mint.json"
 
 const MintCertificate = () => {
-  const localHost = "http://localhost:8080";
+  const host = "https://linkedblocks.onrender.com";
   let navigate = useNavigate();
   const [candidateName, setCandidateName] = useState("");
   const [course, setCourse] = useState(null);
@@ -14,7 +14,7 @@ const MintCertificate = () => {
 
   const mintCertificateOnChain = async() => {
     const token = localStorage.getItem('token').toString();
-    const response = await fetch(`${localHost}/api/certificate/createcertificate`, {
+    const response = await fetch(`${host}/api/certificate/createcertificate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
