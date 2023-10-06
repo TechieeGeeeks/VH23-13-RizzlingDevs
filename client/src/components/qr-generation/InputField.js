@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { InputContext } from "../../App"
+import { InputContext } from "../../pages/ViewCertificate"
 
 const InputField = () => {
   const { inputValue, setInputValue } = useContext(InputContext);
