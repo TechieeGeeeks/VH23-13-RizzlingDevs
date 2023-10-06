@@ -9,24 +9,27 @@ import Login from "./pages/Login";
 import RegisterNow from "./pages/RegisterNow";
 import Courses from "./components/Courses";
 import MintCertificate from "./pages/MintCertificate.jsx";
-
+import { useState } from "react";
 
 function App() {
+  const [isLogin, setIsLogin] = useState(false);
   return (
+    
     <div className="md:p-6 md:px-64 p-7">
-      <Navbar />
+      <Navbar isLogin={isLogin} setIsLogin={setIsLogin}/>
 
       <Routes>
         <Route path="/*" element={<HeroSection />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register-now" element={<RegisterNow />}/>
-        <Route path="/courses" element={<Courses />}/>
-        <Route path="/certificate/create" element={<MintCertificate />}/>
+        <Route path="/login" element={<Login setIsLogin={setIsLogin}/>} />
+        <Route path="/register-now" element={<RegisterNow />} />
+        <Route path="/user_dashboard" element={<Courses />} />
+        <Route path="/certificate/create" element={<MintCertificate />} />
       </Routes>
       {/* <Demo /> */}
       {/* <HeroSection />
        <CertificateWithExport className="Your Class Name" /> */}
-        <CertificateWithExport className="Your Class Name" /> 
+      <CertificateWithExport className="Your Class Name" />
+       
     </div>
   );
 }

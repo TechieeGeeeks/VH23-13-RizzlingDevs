@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({isLogin,setIsLogin}) => {
   const [isMenu, setIsMenu] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
+  let navigate = useNavigate();
 
   const handleMenu = () => {
     setIsMenu(!isMenu);
   };
+
+  const handleLogOut=async()=>{
+    localStorage.removeItem('token');
+    setIsLogin(!isLogin);
+    navigate('/')
+  }
+
   return (
     <header>
       {/* Desk */}
@@ -21,7 +29,7 @@ const Navbar = () => {
 
         <div className=" flex gap-6 ">
           {isLogin ? (
-            <p className="  p-3 rounded hover:shadow-[5px_5px_0px_0px_#FF0000] hover:text-red-500 hover:border-red-500 cursor-pointer hover:border-2">
+            <p className="  p-3 rounded hover:shadow-[5px_5px_0px_0px_#FF0000] hover:text-red-500 hover:border-red-500 cursor-pointer hover:border-2" onClick={handleLogOut}>
               Log Out
             </p>
           ) : (
