@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { ChromePicker } from "react-color";
-import { InputContext } from "../../App";
+import { InputContext } from "../../pages/ViewCertificate";
 
 const InputColor = () => {
   const [color, setColor] = useState('#054080');

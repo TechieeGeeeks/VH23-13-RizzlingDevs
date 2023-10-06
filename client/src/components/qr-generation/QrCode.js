@@ -1,6 +1,6 @@
 import { saveAs } from 'file-saver';
 import { useContext } from "react";
-import { InputContext } from "../../App";
+import { InputContext } from "../../pages/ViewCertificate";
 
 const QrCode = () => {
   const { response, loading, error } = useContext(InputContext);

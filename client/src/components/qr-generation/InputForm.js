@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { InputContext } from "../../App"
+import { InputContext } from "../../pages/ViewCertificate";
 import InputColor from "./InputColor"
 import InputField from "./InputField"
 

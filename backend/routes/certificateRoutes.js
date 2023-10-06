@@ -72,7 +72,7 @@ router.post(
 router.get("/:id", async (req, res) => {
   try {
     const certificate = await Certificate.findById(req.params.id);
-    res.json(certificate);
+    res.json({certificate,success:true});
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Some Eroor Occured");
