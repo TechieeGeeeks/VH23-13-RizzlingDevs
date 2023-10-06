@@ -15,7 +15,13 @@ const ComponentToPrint = React.forwardRef((props, ref) => (
 
 const Certificate = () => {
   const [className, setClassName] = useState("");
+    const [photoUrl, setPhotoUrl] = useState(""); // Store the URL/path to the user's photo
+
   const componentRef = useRef();
+  const handleDownload = () => {
+    exportComponentAsJPEG(componentRef);
+    console.log(componentRef);
+  };
 
   return (
     <div>
@@ -25,12 +31,12 @@ const Certificate = () => {
         className=" border"
       />
 
-      <ComponentToPrint ref={componentRef} className={className} />
-
-      <button onClick={() => exportComponentAsJPEG(componentRef)}>
-        {" "}
-        Download
-      </button>
+      <ComponentToPrint
+        ref={componentRef}
+        className={className}
+        photoUrl={photoUrl}
+      />
+      <button onClick={handleDownload}> Download</button>
     </div>
   );
 };
