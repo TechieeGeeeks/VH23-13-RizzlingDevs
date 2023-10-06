@@ -5,6 +5,7 @@ import Img from "../img/c1.svg";
 import StatusPopup from "./StatusPopUp";
 
 const Cards = ({
+  duration,
   title,
   subTitle,
   type,
@@ -109,6 +110,11 @@ const Cards = ({
                     <div className=" flex-col mt-3">
                       <p className=" text-gray-500">Organization</p>
                       <p className=" font-semibold">{organization}</p>
+                    </div>
+
+                    <div className=" flex-col mt-3">
+                      <p className=" text-gray-500">Duration</p>
+                      <p className=" font-semibold">{duration} Days</p>
                     </div>
                   </div>
                 </div>

@@ -19,6 +19,7 @@ export const courses = [
     type: "Online",
     isCompleted: true,
     img: c1,
+    duration: 5,
   },
   {
     id: 2,

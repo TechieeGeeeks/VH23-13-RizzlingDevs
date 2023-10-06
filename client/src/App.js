@@ -25,7 +25,7 @@ function App() {
   const [response, setResponse] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(false);
 
   const config = {
     headers: { Authorization: "Bearer 2b38fc30-6420-11ee-a74e-41d810857b10" },
@@ -62,14 +62,16 @@ function App() {
   };
 
   return (
-    
     <div className="md:p-6 md:px-64 p-7">
-      <Navbar isLogin={isLogin} setIsLogin={setIsLogin}/>
+      <Navbar isLogin={isLogin} setIsLogin={setIsLogin} />
 
       <Routes>
         <Route path="/*" element={<HeroSection />} />
-        <Route path="/login" element={<Login setIsLogin={setIsLogin}/>} />
-        <Route path="/register-now" element={<RegisterNow setIsLogin={setIsLogin} />} />
+        <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
+        <Route
+          path="/register-now"
+          element={<RegisterNow setIsLogin={setIsLogin} />}
+        />
         <Route path="/user_dashboard" element={<Courses />} />
         <Route path="/certificate/create" element={<MintCertificate />} />
       </Routes>
