@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 import Tick from "../img/tick.json";
 
 const Login = ({ setIsLogin }) => {
-  const localHost = "http://localhost:8080";
+  const host = "https://linkedblocks.onrender.com";
   let navigate = useNavigate();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState(null);
   const [tempLogInCheck, setTempLogInCheck] = useState(false);
 
   const handleLogin = async () => {
-    const response = await fetch(`${localHost}/api/auth/login`, {
+    const response = await fetch(`${host}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

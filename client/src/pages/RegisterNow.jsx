@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Tick from "../img/tick.json";
 
 const Register = ({ setIsLogin }) => {
-  const localHost = "http://localhost:8080";
+  const host = "https://linkedblocks.onrender.com";
   let navigate = useNavigate();
   const [imageAsset, setimageAsset] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -16,7 +16,7 @@ const Register = ({ setIsLogin }) => {
   const [tempLogInCheck, setTempLogInCheck] = useState(false);
 
   const handleRegister = async () => {
-    const response = await fetch(`${localHost}/api/auth/createuser`, {
+    const response = await fetch(`${host}/api/auth/createuser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

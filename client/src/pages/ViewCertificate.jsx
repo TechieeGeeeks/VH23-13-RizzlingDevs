@@ -7,7 +7,7 @@ export const InputContext = createContext();
 
 
 const ViewCertificate = () => {
-  const localHost = `http://localhost:8080`;
+  const host = `https://linkedblocks.onrender.com`;
   const locaHostClient=`http://localhost:3000`
   const { id } = useParams();
   const [response, setResponse] = useState("");
@@ -51,7 +51,7 @@ const ViewCertificate = () => {
 
   const getCertificate = async () => {
     try {
-      const response = await fetch(`${localHost}/api/certificate/${id}`, {
+      const response = await fetch(`${host}/api/certificate/${id}`, {
         method: "GET",
       });
 
@@ -77,7 +77,7 @@ const ViewCertificate = () => {
 
     const validateCertificateOnChain = async()=>{
       try {
-        const response = await fetch(`${localHost}/api/certificate/validatecertificate/${id}`, {
+        const response = await fetch(`${host}/api/certificate/validatecertificate/${id}`, {
           method: "GET",
         });
         const data = await response.json();
