@@ -1,84 +1,96 @@
+const crypto = require('crypto');
 const express = require("express");
 const router = express.Router();
 const CertificateHashSchema = require("../models/BatchHashes");
 const { body, validationResult } = require("express-validator");
-const {
-    HashContract_Address,
-    HashcontractAbi,
-  } = require("../web3_backend/contract_files_web2");
-  
-  // Web3 Integration
-  const { ethers } = require("ethers");
-  
-  const provider = new ethers.AlchemyProvider("sepolia", process.env.API_KEY);
-  const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
-  const signer = wallet.connect(provider);
-  const contract = new ethers.Contract(
-    HashContract_Address,
-    HashcontractAbi,
-    signer
-  );
+const {contract_BatchCertificates_ABI,contract_BatchCertificates_Address} = require("../web3_backend/contract_Batch");
 
-router.get(
-    "/getBatch/:id", async(req,res)=>{
-        try {
-            const hashOfCertifcates = await CertificateHashSchema.findById(req.params.id);
-            res.json(companies)
-        } catch (error) {
-            console.log(error.message)
-            res.status(500).json("some error occured")
-        }
-    }
-)
+// Web3 Integration
+const { ethers } = require("ethers");
+
+const provider = new ethers.AlchemyProvider("sepolia", process.env.API_KEY);
+const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
+const signer = wallet.connect(provider);
+const contract = new ethers.Contract(
+  contract_BatchCertificates_Address,
+  contract_BatchCertificates_ABI,
+  signer
+);
+
+router.get("/getBatch/:id", async (req, res) => {
+  try {
+    const hashOfCertifcates = await CertificateHashSchema.findById(
+      req.params.id
+    );
+    res.json(companies);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json("some error occured");
+  }
+});
 router.post(
-    "/createBatch",  [
-        // Validation Check if user is not providing data in right format
-        body("batchName", "Enter a batch name").isLength({ min: 3 }),
-        body('arraysOfHash').isArray().notEmpty().custom((value) => {
-            // Check that all elements in the array are strings
-            if (value.every((item) => typeof item === 'string')) {
-              return true;
-            } else {
-              throw new Error('All elements in arraysOfHash must be strings');
-            }
-          }),
-      ],
-      async(req, res)=>{
-        const errors = validationResult(req);
-        try {
-            if (!errors.isEmpty()) {
-                // is there is error then return reponse with error
-                success = false;
-                return res.status(400).json({ errors: "The batch already exists!", success });
-              }
-    
-            const batch = await CertificateHashSchema.create(
-                {
-                    batchName:req.body.batchName,
-                    arraysOfHash:req.body.arraysOfHash
-                },
-            )
-          res.json({ success:true, batch})
-        } catch (error) {
-            console.log(error.message)  
+  "/createBatch",
+  [
+    // Validation Check if user is not providing data in right format
+    body("batchName", "Enter a batch name").isLength({ min: 3 }),
+    body("arraysOfHash")
+      .isArray()
+      .notEmpty()
+      .custom((value) => {
+        // Check that all elements in the array are strings
+        if (value.every((item) => typeof item === "string")) {
+          return true;
+        } else {
+          throw new Error("All elements in arraysOfHash must be strings");
         }
-    }
-)
-
-router.get("/validatecertificate/:id", async (req, res) => {
+      }),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
     try {
-      const certificate = await Certificate.findById(req.params.id);
-      const isTrue = await validateCertificateOnChain(certificate);
-      if (isTrue) {
-        res.status(200).json({success:true,certificate})
-      } else {
-        res.json("Certificate is Corrupt or Expired");
+      if (!errors.isEmpty()) {
+        // is there is error then return reponse with error
+        success = false;
+        return res
+          .status(400)
+          .json({ errors: "The batch already exists!", success });
       }
+
+      const batch = await CertificateHashSchema.create({
+        batchName: req.body.batchName,
+        arraysOfHash: req.body.arraysOfHash,
+      });
+
+      const arraysOfHash = batch.arraysOfHash;
+
+      // Step 1: Join array elements into a single string
+      const combinedString = arraysOfHash.join("");
+
+      // Step 2: Calculate SHA-256 hash
+      const sha256Hash = crypto
+        .createHash("sha256")
+        .update(combinedString)
+        .digest("hex");
+      
+      console.log("SHA-256 Hash:", sha256Hash,batch._id);
+      
+      try {
+        const result = await contract.addHashes(
+          batch._id.toString(),sha256Hash.toString()
+        );
+        console.log("Transaction successfull", result.hash);
+        console.log("Certificate generated successfully!");
+        res.json({ success: true, batch,result});
+      } catch (error) {
+        console.error("Error generating certificate:", error);
+        return res.json({success:false})
+      }
+      console.log(batch);
     } catch (error) {
-      console.error(error.message);
-      res.status(500).send("Some Eroor Occured");
+      console.log(error.message);
     }
-  });
+  }
+);
 
 
 module.exports = router;
