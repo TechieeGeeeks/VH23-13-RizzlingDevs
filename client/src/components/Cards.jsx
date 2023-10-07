@@ -71,7 +71,13 @@ const Cards = ({
                 isMinting ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
-              {isMinting ? "Minting..." : "Mint Certificate"}
+              {isMinting ? (
+                "Minting..."
+              ) : (
+                <Link to="/certificate/create">
+                  <p>Mint Certificate</p>
+                </Link>
+              )}
             </button>
           ) : (
             <button

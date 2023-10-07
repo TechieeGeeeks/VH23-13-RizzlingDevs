@@ -5,13 +5,12 @@ import Demo from "../components/Demo";
 import axios from "axios";
 export const InputContext = createContext();
 
-
 const ViewCertificate = () => {
   const host = `https://linkedblocks.onrender.com`;
-  const locaHostClient=`https://linkedblocks.vercel.app`
+  const locaHostClient = `https://linkedblocks.vercel.app`;
   const { id } = useParams();
   const [response, setResponse] = useState("");
-  const[resUrl,setResUrl]=useState("");
+  const [resUrl, setResUrl] = useState("");
   const [error, setError] = useState(null);
   const [certificate, setCertificate] = useState({
     _id: "",
@@ -23,7 +22,6 @@ const ViewCertificate = () => {
   });
   const getQrCode = async () => {
     try {
-
       const res = await axios.post(
         "https://qrtiger.com/api/qr/static",
         bodyParameters,
@@ -34,20 +32,17 @@ const ViewCertificate = () => {
     } catch (err) {
       setError(err);
     } finally {
-
     }
   };
-
 
   const config = {
     headers: { Authorization: "Bearer 4853daa0-648f-11ee-8a91-5771e619eb20" },
   };
   const bodyParameters = {
-    colorDark: '#000000',
+    colorDark: "#000000",
     qrCategory: "url",
     text: `${locaHostClient}/certificate/view/${id}`,
   };
-
 
   const getCertificate = async () => {
     try {
@@ -75,34 +70,36 @@ const ViewCertificate = () => {
     }
   };
 
-    const validateCertificateOnChain = async()=>{
-      try {
-        const response = await fetch(`${host}/api/certificate/validatecertificate/${id}`, {
+  const validateCertificateOnChain = async () => {
+    try {
+      const response = await fetch(
+        `${host}/api/certificate/validatecertificate/${id}`,
+        {
           method: "GET",
-        });
-        const data = await response.json();
-        console.log(data);
-        if (data.success) {
-          //console.log("The Certificate holders name:", data.saveCertificate.candidateName);
-          //console.log("The Certificate holders id:", data.saveCertificate._id);
-          console.log(data);
-          setCertificate({
-            _id: data.certificate._id,
-            user: data.certificate.user,
-            candidateName: data.certificate.candidateName,
-            orgName: data.certificate.orgName,
-            courseName: data.certificate.courseName,
-            duration: data.certificate.duration,
-          });
-          alert("Hogaya")
         }
-        // Now you can use the 'data' object as needed in your application.
-      } catch (error) {
-        console.error("Error:", error.message);
-        // Handle the error as needed, e.g., display an error message to the user.
+      );
+      const data = await response.json();
+      // console.log(data);
+      if (data.success) {
+        //console.log("The Certificate holders name:", data.saveCertificate.candidateName);
+        //console.log("The Certificate holders id:", data.saveCertificate._id);
+        console.log(data);
+        setCertificate({
+          _id: data.certificate._id,
+          user: data.certificate.user,
+          candidateName: data.certificate.candidateName,
+          orgName: data.certificate.orgName,
+          courseName: data.certificate.courseName,
+          duration: data.certificate.duration,
+        });
+        alert("Hogaya");
       }
+      // Now you can use the 'data' object as needed in your application.
+    } catch (error) {
+      console.error("Error:", error.message);
+      // Handle the error as needed, e.g., display an error message to the user.
     }
-
+  };
 
   useEffect(() => {
     getCertificate();
@@ -111,7 +108,14 @@ const ViewCertificate = () => {
   }, []);
 
   return (
-    <>
+    <div className=" flex flex-col items-center mt-14">
+      {" "}
+      <button
+        onClick={validateCertificateOnChain}
+        className=" border border-purpleColor text-purpleColor p-3 rounded-lg shadow-[5px_5px_0px_0px_rgba(109,40,217)] hover:text-black hover:border-black hover:shadow-black "
+      >
+        Validate Certificate
+      </button>
       <Demo
         name={certificate.candidateName}
         title={certificate.courseName}
@@ -119,9 +123,7 @@ const ViewCertificate = () => {
         logo={resUrl}
         hash={certificate._id}
       />
-      
-      <button onClick={validateCertificateOnChain}>Validate Certificate</button>
-    </>
+    </div>
   );
 };
 
