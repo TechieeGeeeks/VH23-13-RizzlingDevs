@@ -17,7 +17,7 @@ const Footer = () => {
         </div>
 
         <div className=" flex flex-col gap-5">
-          <p>Company</p>
+          <p>Resources</p>
           <ul className=" text-lighttextGray  text-sm flex flex-col gap-3  ">
           
            <Link to='/user_dashboard'> <li>Courses </li> </Link> 
@@ -29,10 +29,10 @@ const Footer = () => {
         </div>
 
         <div className=" flex flex-col gap-5">
-          <p>For Jobs</p>
+          <p>For Certificates</p>
           <ul className=" text-lighttextGray text-sm flex flex-col gap-3  ">
-            <li>Browser Jobs</li>
-            <li>Browser Categories </li>
+            <li>Browse Certificates</li>
+            <li>Browse Categories </li>
             <Link  to='/login'>
               <li>Admin Login</li>
             </Link>
@@ -44,15 +44,15 @@ const Footer = () => {
       <div className="md:hidden bg-darkGray">
         <div className="flex flex-col justify-center gap-4">
           <div>
-            <p className="text-lightCard text-xl">Jobshunt</p>
+            <p className="text-lightCard text-xl">Linking Blocks</p>
             <p className="text-footerSubtitle font-extralight text-sm">
-              Gateway to web3 jobs.
+              Gateway to Secured and Validated Certificates
             </p>
           </div>
           <SocialIcons />
           <div className=" flex gap-10 mt-7">
             <div className=" flex flex-col gap-5">
-              <p>Company</p>
+              <p>Resources</p>
               <ul className=" text-lighttextGray text-sm flex flex-col gap-3  ">
             <Link to='/user_dashboard'> <li>Courses </li> </Link> 
             <Link to='/certificate/create'> <li>MintCertificate </li> </Link> 
@@ -62,10 +62,10 @@ const Footer = () => {
             </div>
 
             <div className=" flex flex-col gap-5">
-              <p>For Jobs</p>
+              <p>For Certificates</p>
               <ul className=" text-lighttextGray text-sm flex flex-col gap-3  ">
-                <li>Browser Jobs</li>
-                <li>Browser Categories </li>
+                <li>Browse Certificates</li>
+                <li>Browse Categories </li>
                 <li>Admin Login</li>
               </ul>
             </div>
