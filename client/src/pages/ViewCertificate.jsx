@@ -1,20 +1,26 @@
 import React from "react";
 import { useState, useEffect, createContext } from "react";
-import { hostC,hostS,clientHost,serverHost } from "../apiHelp";
+import { hostC, hostS, clientHost, serverHost } from "../apiHelp";
 import { useParams } from "react-router-dom";
 import Demo from "../components/Demo";
 import axios from "axios";
+import Lottie from "lottie-react";
+import bBlock from "../img/block.json";
+import DBase from "../img/db.json";
+import Tick from "../img/tick.json";
+
 export const InputContext = createContext();
 
-
 const host = hostS;
-const locaHostClient=hostC;
+const locaHostClient = hostC;
 
 const ViewCertificate = () => {
   const { id } = useParams();
   const [response, setResponse] = useState("");
-  const[resUrl,setResUrl]=useState("");
+  const [resUrl, setResUrl] = useState("");
   const [error, setError] = useState(null);
+  const [isVerifyClicked, setIsVerifyClicked] = useState(false);
+  const [connectionSuccess, setConnectionSuccess] = useState(false);
   const [certificate, setCertificate] = useState({
     _id: "",
     user: "",
@@ -25,7 +31,6 @@ const ViewCertificate = () => {
   });
   const getQrCode = async () => {
     try {
-
       const res = await axios.post(
         "https://qrtiger.com/api/qr/static",
         bodyParameters,
@@ -36,20 +41,17 @@ const ViewCertificate = () => {
     } catch (err) {
       setError(err);
     } finally {
-
     }
   };
 
-
   const config = {
-    headers: { Authorization: "Bearer 4853daa0-648f-11ee-8a91-5771e619eb20" },
+    headers: { Authorization: "Bearer be5b5970-6490-11ee-b157-c946b9aced4f" },
   };
   const bodyParameters = {
-    colorDark: '#000000',
+    colorDark: "#000000",
     qrCategory: "url",
     text: `${locaHostClient}/certificate/view/${id}`,
   };
-
 
   const getCertificate = async () => {
     try {
@@ -77,34 +79,44 @@ const ViewCertificate = () => {
     }
   };
 
-    const validateCertificateOnChain = async()=>{
-      try {
-        const response = await fetch(`${host}/api/certificate/validatecertificate/${id}`, {
+  const validateCertificateOnChain = async () => {
+    try {
+      setIsVerifyClicked(true);
+      const response = await fetch(
+        `${host}/api/certificate/validatecertificate/${id}`,
+        {
           method: "GET",
-        });
-        const data = await response.json();
-        console.log(data);
-        if (data.success) {
-          //console.log("The Certificate holders name:", data.saveCertificate.candidateName);
-          //console.log("The Certificate holders id:", data.saveCertificate._id);
-          console.log(data);
-          setCertificate({
-            _id: data.certificate._id,
-            user: data.certificate.user,
-            candidateName: data.certificate.candidateName,
-            orgName: data.certificate.orgName,
-            courseName: data.certificate.courseName,
-            duration: data.certificate.duration,
-          });
-          alert("Hogaya")
         }
-        // Now you can use the 'data' object as needed in your application.
-      } catch (error) {
-        console.error("Error:", error.message);
-        // Handle the error as needed, e.g., display an error message to the user.
-      }
-    }
+      );
+      const data = await response.json();
+      // console.log(data);
+      if (data.success) {
+        //console.log("The Certificate holders name:", data.saveCertificate.candidateName);
+        //console.log("The Certificate holders id:", data.saveCertificate._id);
+        console.log(data);
+        setCertificate({
+          _id: data.certificate._id,
+          user: data.certificate.user,
+          candidateName: data.certificate.candidateName,
+          orgName: data.certificate.orgName,
+          courseName: data.certificate.courseName,
+          duration: data.certificate.duration,
+        });
+        setTimeout(() => {
+          setIsVerifyClicked(false);
+          setConnectionSuccess(true);
+        }, 5400);
 
+        setTimeout(() => {
+          setConnectionSuccess(false);
+        }, 10000);
+      }
+      // Now you can use the 'data' object as needed in your application.
+    } catch (error) {
+      console.error("Error:", error.message);
+      // Handle the error as needed, e.g., display an error message to the user.
+    }
+  };
 
   useEffect(() => {
     getCertificate();
@@ -113,17 +125,49 @@ const ViewCertificate = () => {
   }, []);
 
   return (
-    <>
-      <Demo
-        name={certificate.candidateName}
-        title={certificate.courseName}
-        date={certificate.duration}
-        logo={resUrl}
-        hash={certificate._id}
-      />
-      
-      <button onClick={validateCertificateOnChain}>Validate Certificate</button>
-    </>
+    <div className=" flex flex-col items-center mt-14">
+      {isVerifyClicked ? (
+        <div></div>
+      ) : (
+        <button
+          onClick={validateCertificateOnChain}
+          className=" border border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)]  text-purpleColor p-3 rounded-lg hover:text-black hover:border-black hover:shadow-black "
+        >
+          Validate Certificate
+        </button>
+      )}
+
+      {connectionSuccess && (
+        <div className="  mt-5 md:w-full min-w-620 flex flex-col items-center justify-center">
+          <div className="  border border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)]  w-1/4 flex items-center justify-center bg-white rounded-lg p-6">
+            <p>Successfully Validate</p>
+            <Lottie animationData={Tick} />
+          </div>
+        </div>
+      )}
+
+      {isVerifyClicked && (
+        <div className="md:w-full min-w-620 flex flex-col items-center justify-center">
+          <div className="  border border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)]  w-1/4 flex items-center justify-center bg-white rounded-lg p-6">
+            <p>Connecting to database...</p>
+            <Lottie animationData={DBase} />
+          </div>
+          <div className=" border border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)]  mt-6 w-1/4 flex items-center justify-center bg-white rounded-lg p-6">
+            <Lottie animationData={bBlock} /> <p>Connecting to blockchain...</p>
+          </div>
+        </div>
+      )}
+
+      {!connectionSuccess && !isVerifyClicked && (
+        <Demo
+          name={certificate.candidateName}
+          title={certificate.courseName}
+          date={certificate.duration}
+          logo={resUrl}
+          hash={certificate._id}
+        />
+      )}
+    </div>
   );
 };
 
