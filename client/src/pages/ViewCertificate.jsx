@@ -4,6 +4,11 @@ import { hostC, hostS, clientHost, serverHost } from "../apiHelp";
 import { useParams } from "react-router-dom";
 import Demo from "../components/Demo";
 import axios from "axios";
+import Lottie from "lottie-react";
+import bBlock from "../img/block.json";
+import DBase from "../img/db.json";
+import Tick from "../img/tick.json";
+
 export const InputContext = createContext();
 
 const host = hostS;
@@ -14,7 +19,8 @@ const ViewCertificate = () => {
   const [response, setResponse] = useState("");
   const [resUrl, setResUrl] = useState("");
   const [error, setError] = useState(null);
-  const [isVerifyClicked, setIsVerifyClicked] = useState(true);
+  const [isVerifyClicked, setIsVerifyClicked] = useState(false);
+  const [connectionSuccess, setConnectionSuccess] = useState(false);
   const [certificate, setCertificate] = useState({
     _id: "",
     user: "",
@@ -39,7 +45,7 @@ const ViewCertificate = () => {
   };
 
   const config = {
-    headers: { Authorization: "Bearer f6e348b0-6491-11ee-b8be-699c810708b9" },
+    headers: { Authorization: "Bearer be5b5970-6490-11ee-b157-c946b9aced4f" },
   };
   const bodyParameters = {
     colorDark: "#000000",
@@ -75,6 +81,7 @@ const ViewCertificate = () => {
 
   const validateCertificateOnChain = async () => {
     try {
+      setIsVerifyClicked(true);
       const response = await fetch(
         `${host}/api/certificate/validatecertificate/${id}`,
         {
@@ -95,7 +102,14 @@ const ViewCertificate = () => {
           courseName: data.certificate.courseName,
           duration: data.certificate.duration,
         });
-        alert("Hogaya");
+        setTimeout(() => {
+          setIsVerifyClicked(false);
+          setConnectionSuccess(true);
+        }, 5400);
+
+        setTimeout(() => {
+          setConnectionSuccess(false);
+        }, 10000);
       }
       // Now you can use the 'data' object as needed in your application.
     } catch (error) {
@@ -117,19 +131,42 @@ const ViewCertificate = () => {
       ) : (
         <button
           onClick={validateCertificateOnChain}
-          className=" border border-purpleColor text-purpleColor p-3 rounded-lg shadow-[5px_5px_0px_0px_rgba(109,40,217)] hover:text-black hover:border-black hover:shadow-black "
+          className=" border border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)]  text-purpleColor p-3 rounded-lg hover:text-black hover:border-black hover:shadow-black "
         >
           Validate Certificate
         </button>
       )}
 
-      <Demo
-        name={certificate.candidateName}
-        title={certificate.courseName}
-        date={certificate.duration}
-        logo={resUrl}
-        hash={certificate._id}
-      />
+      {connectionSuccess && (
+        <div className="  mt-5 md:w-full min-w-620 flex flex-col items-center justify-center">
+          <div className="  border border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)]  w-1/4 flex items-center justify-center bg-white rounded-lg p-6">
+            <p>Successfully Validate</p>
+            <Lottie animationData={Tick} />
+          </div>
+        </div>
+      )}
+
+      {isVerifyClicked && (
+        <div className="md:w-full min-w-620 flex flex-col items-center justify-center">
+          <div className="  border border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)]  w-1/4 flex items-center justify-center bg-white rounded-lg p-6">
+            <p>Connecting to database...</p>
+            <Lottie animationData={DBase} />
+          </div>
+          <div className=" border border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)]  mt-6 w-1/4 flex items-center justify-center bg-white rounded-lg p-6">
+            <Lottie animationData={bBlock} /> <p>Connecting to blockchain...</p>
+          </div>
+        </div>
+      )}
+
+      {!connectionSuccess && !isVerifyClicked && (
+        <Demo
+          name={certificate.candidateName}
+          title={certificate.courseName}
+          date={certificate.duration}
+          logo={resUrl}
+          hash={certificate._id}
+        />
+      )}
     </div>
   );
 };
