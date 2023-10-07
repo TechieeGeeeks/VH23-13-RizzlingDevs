@@ -8,7 +8,7 @@ const Footer = () => {
 
       <div className="hidden my-20 md:flex gap-24">
         <div className=" w-[30%] flex flex-col gap-5">
-          <p className=" text-xl font-semibold">Jobhunt</p>
+          <p className=" text-xl "><span className="font-semibold">Linking</span>Blocks</p>
           <p className=" text-lighttextGray">
             It is a long established fact that a reader will be of a page reader
             will be of at its layout.
@@ -22,7 +22,7 @@ const Footer = () => {
           
            <Link to='/user_dashboard'> <li>Courses </li> </Link> 
            <Link to='/certificate/create'> <li>MintCertificate </li> </Link> 
-           <Link to='/certificates'> <li>ViewCertificate </li> </Link> 
+           <Link to='/certificate/view/:id'> <li>ViewCertificate </li> </Link> 
            <Link to='/image_hasher'><li>ImageHasher </li></Link> 
            
           </ul>
