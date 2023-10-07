@@ -228,11 +228,11 @@ function Demo({ title, name, date, hash, logo }) {
 
       {/* Mobile */}
       <div className=" flex lg:hidden md:hidden items-center justify-center">
-        <div className="hidden lg:flex">
+        <div className="flex lg:hidden md:hidden">
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="100%"
+              width="550"
               height="500"
               id="certificate"
             >
