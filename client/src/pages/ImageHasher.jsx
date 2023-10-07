@@ -5,7 +5,7 @@ import { hostC, hostS, clientHost, serverHost } from "../apiHelp";
 
 function ImageHasher() {
   const [fileHashes, setfileHashes] = useState([]);
-  const host = hostS;
+  const host = serverHost;
 
   async function hashImage(file) {
     const buffer = await file.arrayBuffer();
