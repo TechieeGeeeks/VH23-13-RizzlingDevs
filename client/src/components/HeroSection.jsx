@@ -11,7 +11,7 @@ const HeroSection = () => {
           <span className=" text-purpleColor ">CERTIFICATES</span>
         </p>
         <p className=" text-gray-400">
-        Certify Blocks provides a seamless and secure certificate management solution, ensuring that your credentials are easily accessible, tamper-proof, and instantly verifiable.
+        Linking Blocks provides a seamless and secure certificate management solution, ensuring that your credentials are easily accessible, tamper-proof, and instantly verifiable.
         </p>
         {/* <div>
           <a href="#">
