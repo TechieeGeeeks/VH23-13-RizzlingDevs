@@ -8,6 +8,7 @@ import Courses from "./components/Courses";
 import MintCertificate from "./pages/MintCertificate.jsx";
 import { useState } from "react";
 import ImageHasher from "./pages/ImageHasher"
+import offlineCertificateChecker from "./pages/offlineCertificateChecker";
 
 import ViewCertificate from "./pages/ViewCertificate";
 import UserRoute from "./components/userRoute";
@@ -32,6 +33,7 @@ function App() {
         <Route path="/image_hasher" element={<ImageHasher />} />
         <Route path="/certificate/create" element={<MintCertificate />} />
         <Route path="/certificate/view/:id" element={<ViewCertificate />} />
+        <Route path="/offlineCertificate" element={<offlineCertificateChecker />} />
       </Routes>
      </div>
   );
