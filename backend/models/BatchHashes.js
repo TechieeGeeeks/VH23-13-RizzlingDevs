@@ -5,7 +5,10 @@ const certificateHashSchema = new Schema({
     type: String,
     required: true,
   },
-
+  haid_id:{
+    type:String,
+    required:true
+  },
   arraysOfHash:[{type:String,required:true}],
 
   date: {
