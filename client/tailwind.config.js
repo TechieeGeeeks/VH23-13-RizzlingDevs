@@ -58,7 +58,8 @@ module.exports = {
         lightCard: "#FFFFFF",
         footerSubtitle: 'rgba(255, 255, 255, 0.55)',
         lightBgBlue: 'rgba(13, 27, 207, 0.05)',
-        purpleColor: 'rgba(109,40,217)'
+        purpleColor: 'rgba(109,40,217)',
+        darkGray:"#3c0d85"
       },
     },
   },
