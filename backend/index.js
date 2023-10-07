@@ -15,7 +15,7 @@ app.use(express.json())
 
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/company', require('./routes/company'))
-// app.use('/api/company', require('./routes/company'))
+app.use('/api/ceritificateBatches', require('./routes/certificateBatches'))
 app.use('/api/certificate',require('./routes/certificateRoutes'))
 
 

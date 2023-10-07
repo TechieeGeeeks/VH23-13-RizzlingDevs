@@ -6,9 +6,10 @@ import mint from "../img/mint.json";
 import Minting from "../img/scanner.json";
 import { AiOutlineEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { hostC,hostS,clientHost,serverHost } from "../apiHelp";
 
 const MintCertificate = () => {
-  const host = "https://linkedblocks.onrender.com";
+  const host = hostS;
   let navigate = useNavigate();
   const [candidateName, setCandidateName] = useState("");
   const [course, setCourse] = useState(null);

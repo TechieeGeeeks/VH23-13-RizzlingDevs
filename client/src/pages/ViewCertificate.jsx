@@ -1,13 +1,16 @@
 import React from "react";
 import { useState, useEffect, createContext } from "react";
+import { hostC,hostS,clientHost,serverHost } from "../apiHelp";
 import { useParams } from "react-router-dom";
 import Demo from "../components/Demo";
 import axios from "axios";
 export const InputContext = createContext();
 
+
+const host = hostS;
+const locaHostClient=hostC;
+
 const ViewCertificate = () => {
-  const host = `https://linkedblocks.onrender.com`;
-  const locaHostClient = `https://linkedblocks.vercel.app`;
   const { id } = useParams();
   const [response, setResponse] = useState("");
   const [resUrl, setResUrl] = useState("");
