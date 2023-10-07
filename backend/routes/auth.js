@@ -108,9 +108,9 @@ router.post(
               <p>Your registration has been successfully completed, and we are thrilled to have you on board.</p>
               <p>Here are your registration details:</p>
               <ul>
-                <li><strong>Name:</strong> [User's Name]</li>
-                <li><strong>Email:</strong> [User's Email]</li>
-                <li><strong>Password:</strong> [User's Password]</li>
+                <li><strong>Name:</strong> ${req.body.name} </li>
+                <li><strong>Email:</strong> ${req.body.email}</li>
+                <li><strong>Password:</strong> ${req.body.password}</li>
               </ul>
               <p>You now have access to our services and can start exploring all the exciting features we offer.</p>
               <p>If you have any questions or need assistance, please don't hesitate to contact our <span class="contact">customer support</span> team at support@example.com.</p>
