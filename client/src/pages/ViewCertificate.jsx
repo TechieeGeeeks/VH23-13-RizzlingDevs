@@ -21,6 +21,7 @@ const ViewCertificate = () => {
   const [error, setError] = useState(null);
   const [isVerifyClicked, setIsVerifyClicked] = useState(false);
   const [connectionSuccess, setConnectionSuccess] = useState(false);
+  const [dbStatus, setDbstatus] = useState(false);
   const [certificate, setCertificate] = useState({
     _id: "",
     user: "",
@@ -104,12 +105,18 @@ const ViewCertificate = () => {
         });
         setTimeout(() => {
           setIsVerifyClicked(false);
-          setConnectionSuccess(true);
-        }, 5400);
+          setDbstatus(true);
+        }, 3000);
 
         setTimeout(() => {
-          setConnectionSuccess(false);
-        }, 10000);
+          setDbstatus(false);
+          setConnectionSuccess(true)
+        }, 6000);
+
+        setTimeout(() => {
+          
+          setConnectionSuccess(false)
+        }, 9500);
       }
       // Now you can use the 'data' object as needed in your application.
     } catch (error) {
@@ -125,22 +132,21 @@ const ViewCertificate = () => {
   }, []);
 
   return (
-    <div className=" flex flex-col items-center mt-14">
-      {isVerifyClicked ? (
-        <div></div>
-      ) : (
-        <button
+    <div className=" flex flex-col items-center mt-14 h-screen justify-center pb-12">
+      
+        {!connectionSuccess && !isVerifyClicked &&!dbStatus && ( <button
           onClick={validateCertificateOnChain}
           className=" border border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)]  text-purpleColor p-3 rounded-lg hover:text-black hover:border-black hover:shadow-black "
         >
           Validate Certificate
-        </button>
-      )}
+        </button>)}
+       
+      
 
       {connectionSuccess && (
         <div className="  mt-5 md:w-full min-w-620 flex flex-col items-center justify-center">
-          <div className="  border border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)]  w-1/4 flex items-center justify-center bg-white rounded-lg p-6">
-            <p>Successfully Validate</p>
+          <div className="  border border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)]  w-[20%] flex items-center justify-center bg-white rounded-lg p-4">
+            <p>Successfully Validated</p>
             <Lottie animationData={Tick} />
           </div>
         </div>
@@ -152,13 +158,25 @@ const ViewCertificate = () => {
             <p>Connecting to database...</p>
             <Lottie animationData={DBase} />
           </div>
-          <div className=" border border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)]  mt-6 w-1/4 flex items-center justify-center bg-white rounded-lg p-6">
+          {/* <div className=" border border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)]  mt-6 w-1/4 flex items-center justify-center bg-white rounded-lg p-6">
             <Lottie animationData={bBlock} /> <p>Connecting to blockchain...</p>
-          </div>
+          </div> */}
         </div>
       )}
 
-      {!connectionSuccess && !isVerifyClicked && (
+      {dbStatus && (
+        <div className="md:w-full min-w-620 flex flex-col items-center justify-center">
+          <div className="  border border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)]  w-1/4 flex items-center justify-center bg-white rounded-lg p-6">
+            <p>Connecting to Blockchain.</p>
+            <Lottie animationData={bBlock} />
+          </div>
+          {/* <div className=" border border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)]  mt-6 w-1/4 flex items-center justify-center bg-white rounded-lg p-6">
+            <Lottie animationData={bBlock} /> <p>Connecting to blockchain...</p>
+          </div> */}
+        </div>
+      )}
+
+      {!connectionSuccess && !isVerifyClicked &&!dbStatus && (
         <Demo
           name={certificate.candidateName}
           title={certificate.courseName}

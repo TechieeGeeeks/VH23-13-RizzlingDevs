@@ -16,7 +16,7 @@ const MintCertificate = () => {
   const [expiryDate, setexpiryDate] = useState(365);
   const [organizationName, setorganizationName] = useState(null);
   const [mintClicked, setMintClicked] = useState(false);
-  const [mintSuccess, setMintSuccess] = useState(false); // State for success message
+  const [mintSuccess, setMintSuccess] = useState(false);
   const [id, setid] = useState("");
   const [result, setResult] = useState('')
 
@@ -62,7 +62,7 @@ const MintCertificate = () => {
   };
 
   return (
-    <div className="w-full flex flex-col gap-8 items-center justify-center md:mt-36 mt-12">
+    <div className="w-full flex flex-col gap-8 items-center justify-center pb-40 h-screen">
       <div className="w-[90%] md:w-[50%] mt-16 border-2 border-purpleColor shadow-[5px_5px_0px_0px_rgba(109,40,217)] rounded-lg p-4 flex flex-col items-center justify-center gap-4">
         {mintClicked ? (
           <div>
