@@ -4,7 +4,7 @@ import hero from "../img/hero.json";
 
 const HeroSection = () => {
   return (
-    <div className=" grid md:grid-cols-2 grid-cols-1 items-center mt-12 md:mt-0 ">
+    <div className=" grid md:grid-cols-2 grid-cols-1 items-center mt-12 md:mt-0">
       <div className=" flex flex-col gap-6 pb-14 md:text-left text-center">
         <p className=" md:text-[3rem] text-[2.5rem] font-medium leading-tight">
         GET YOUR SECURED AND VERIFIED{" "}

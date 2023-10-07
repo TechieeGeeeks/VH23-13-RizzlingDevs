@@ -12,6 +12,8 @@ import ImageHasher from "./pages/ImageHasher";
 import ViewCertificate from "./pages/ViewCertificate";
 import UserRoute from "./components/userRoute";
 import Footer from "./components/Footer";
+import TrustedPartners from "./components/TrustedPartners";
+import Homepage from "./pages/Homepage";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -22,7 +24,7 @@ function App() {
         <Navbar isLogin={isLogin} setIsLogin={setIsLogin} />
 
         <Routes>
-          <Route path="/*" element={<HeroSection />} />
+          <Route path="/*" element={<Homepage />} />
           <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
           <Route
             path="/register-now"
