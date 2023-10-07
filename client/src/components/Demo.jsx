@@ -59,7 +59,7 @@ function Demo({ title, name, date, hash, logo }) {
               Completing Course On:
             </text>
             <line x1="250" y1="260" x2="750" y2="260" id="titleUnderLine" />
-            <text x="500" y="250" text-anchor="middle" fill="black" id="title">
+            <text x="500" y="250" text-anchor="middle" fill="black" id="title" fontWeight={'bold'} fontSize={26}>
               {title}
             </text>
             <text
@@ -232,7 +232,7 @@ function Demo({ title, name, date, hash, logo }) {
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="550"
+              width="450"
               height="500"
               id="certificate"
             >
@@ -271,47 +271,47 @@ function Demo({ title, name, date, hash, logo }) {
                 textAnchor="middle"
                 fill="purple"
                 id="bodyTitle"
-                fontSize="24"
+                fontSize="22"
               >
                 Certificate Of Appreciating for
               </text>
               <text
                 x="50%"
-                y="150"
+                y="130"
                 textAnchor="middle"
                 fill="purple"
                 id="bodyTitle"
-                fontSize="24"
+                fontSize="22"
               >
                 Completing Course On:
               </text>
               <line x1="30%" y1="260" x2="70%" y2="260" id="titleUnderLine" />
-              <text x="50%" y="250" textAnchor="middle" fill="black" id="title">
+              <text x="50%" y="200" textAnchor="middle" fill="black" id="title" fontWeight='bold'>
                 {title}
               </text>
               <text
                 x="50%"
-                y="300"
+                y="250"
                 textAnchor="middle"
                 fill="black"
                 id="subTitleHeader"
               >
                 awarded to
               </text>
-              <text x="50%" y="400" textAnchor="middle" fill="black" id="name">
+              <text x="50%" y="290" textAnchor="middle" fill="black" id="name" fontSize={20} fontWeight={'bold'}>
                 {name}
               </text>
               <line x1="20%" y1="410" x2="80%" y2="410" id="titleUnderLine" />
               <text
                 x="50%"
-                y="440"
+                y="320"
                 textAnchor="middle"
                 fill="black"
                 id="bodySubTitle"
               >
                 on
               </text>
-              <text x="50%" y="500" textAnchor="middle" fill="black" id="date">
+              <text x="50%" y="360" textAnchor="middle" fill="black" id="date">
                 {date}
               </text>
               <line x1="40%" y1="510" x2="60%" y2="510" id="titleUnderLine" />
@@ -319,10 +319,10 @@ function Demo({ title, name, date, hash, logo }) {
                 ID: {hash}
               </text>
               <image
-                x="70%"
+                x="65%"
                 y="300"
-                height="150px"
-                width="150px"
+                height="100px"
+                width="100px"
                 id="logo"
                 href={logo}
               />
