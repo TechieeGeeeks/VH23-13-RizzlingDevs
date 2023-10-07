@@ -3,9 +3,10 @@ import { courses } from "../utils/data";
 import { useNavigate } from "react-router";
 import Lottie from "lottie-react";
 import mint from "../img/mint.json"
+import { hostC,hostS,clientHost,serverHost } from "../apiHelp";
 
 const MintCertificate = () => {
-  const host = "https://linkedblocks.onrender.com";
+  const host = hostS;
   let navigate = useNavigate();
   const [candidateName, setCandidateName] = useState("");
   const [course, setCourse] = useState(null);
@@ -31,7 +32,7 @@ const MintCertificate = () => {
     const json = await response.json();
     if (json.success) {
       alert("Swayam Karle Generated New Certificate check Console");
-      console.log("Name: ",json.saveCertificate.candidateName, " Minted Certificcate with name : ",json.saveCertificate.courseName);
+      console.log("Name: ",json.certificate.candidateName, " Minted Certificcate with name : ",json.certificate.courseName, json.certificate._id);
       
       console.log(`https://sepolia.etherscan.io/tx/${json.result_hash}`)
     } else {

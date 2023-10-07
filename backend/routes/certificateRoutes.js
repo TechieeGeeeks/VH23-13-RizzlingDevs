@@ -82,6 +82,7 @@ router.get("/:id", async (req, res) => {
 //
 router.get("/validatecertificate/:id", async (req, res) => {
   try {
+    console.log(req.params.id);
     const certificate = await Certificate.findById(req.params.id);
     const isTrue = await validateCertificateOnChain(certificate);
     if (isTrue) {
@@ -126,13 +127,15 @@ const validateCertificateOnChain = async (certificate) => {
     orgName: certificate.orgName,
     courseName: certificate.courseName,
   };
-
-  const certificateDataOnChain = await contract.getData(certificate._id);
+  console.log("Id is",certificate._id.toString());
+  const certificateDataOnChain = await contract.getData(certificate._id.toString());
   const responseFromBlockchain = {
     candidateName: certificateDataOnChain[0],
     orgName: certificateDataOnChain[1],
     courseName: certificateDataOnChain[2],
   };
+  console.log("Response From Blockchain is : ",responseFromBlockchain,
+                "Response From Database is :", responseFromDB);
 
   if (
     JSON.stringify(responseFromBlockchain) === JSON.stringify(responseFromDB)
