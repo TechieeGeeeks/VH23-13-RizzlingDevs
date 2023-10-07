@@ -1,20 +1,20 @@
 import React from "react";
 import { useState, useEffect, createContext } from "react";
-import { hostC,hostS,clientHost,serverHost } from "../apiHelp";
+import { hostC, hostS, clientHost, serverHost } from "../apiHelp";
 import { useParams } from "react-router-dom";
 import Demo from "../components/Demo";
 import axios from "axios";
 export const InputContext = createContext();
 
-
 const host = hostS;
-const locaHostClient=hostC;
+const locaHostClient = hostC;
 
 const ViewCertificate = () => {
   const { id } = useParams();
   const [response, setResponse] = useState("");
   const [resUrl, setResUrl] = useState("");
   const [error, setError] = useState(null);
+  const [isVerifyClicked, setIsVerifyClicked] = useState(true);
   const [certificate, setCertificate] = useState({
     _id: "",
     user: "",
@@ -39,7 +39,7 @@ const ViewCertificate = () => {
   };
 
   const config = {
-    headers: { Authorization: "Bearer 4853daa0-648f-11ee-8a91-5771e619eb20" },
+    headers: { Authorization: "Bearer f6e348b0-6491-11ee-b8be-699c810708b9" },
   };
   const bodyParameters = {
     colorDark: "#000000",
@@ -112,13 +112,17 @@ const ViewCertificate = () => {
 
   return (
     <div className=" flex flex-col items-center mt-14">
-      {" "}
-      <button
-        onClick={validateCertificateOnChain}
-        className=" border border-purpleColor text-purpleColor p-3 rounded-lg shadow-[5px_5px_0px_0px_rgba(109,40,217)] hover:text-black hover:border-black hover:shadow-black "
-      >
-        Validate Certificate
-      </button>
+      {isVerifyClicked ? (
+        <div></div>
+      ) : (
+        <button
+          onClick={validateCertificateOnChain}
+          className=" border border-purpleColor text-purpleColor p-3 rounded-lg shadow-[5px_5px_0px_0px_rgba(109,40,217)] hover:text-black hover:border-black hover:shadow-black "
+        >
+          Validate Certificate
+        </button>
+      )}
+
       <Demo
         name={certificate.candidateName}
         title={certificate.courseName}

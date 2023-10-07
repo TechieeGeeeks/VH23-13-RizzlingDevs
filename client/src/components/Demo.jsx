@@ -59,7 +59,15 @@ function Demo({ title, name, date, hash, logo }) {
               Completing Course On:
             </text>
             <line x1="250" y1="260" x2="750" y2="260" id="titleUnderLine" />
-            <text x="500" y="250" text-anchor="middle" fill="black" id="title" fontWeight={'bold'} fontSize={26}>
+            <text
+              x="500"
+              y="250"
+              text-anchor="middle"
+              fill="black"
+              id="title"
+              fontWeight={"bold"}
+              fontSize={26}
+            >
               {title}
             </text>
             <text
@@ -68,23 +76,32 @@ function Demo({ title, name, date, hash, logo }) {
               text-anchor="middle"
               fill="black"
               id="subTitleHeader"
+              fontSize={20}
             >
               awarded to
             </text>
-            <text x="500" y="400" text-anchor="middle" fill="black" id="name">
+            <text
+              x="500"
+              y="340"
+              text-anchor="middle"
+              fill="black"
+              id="name"
+              fontSize={22}
+              fontWeight={"bold"}
+            >
               {name}
             </text>
             <line x1="200" y1="410" x2="800" y2="410" id="titleUnderLine" />
             <text
               x="500"
-              y="440"
+              y="370"
               text-anchor="middle"
               fill="black"
               id="bodySubTitle"
             >
               on
             </text>
-            <text x="500" y="500" text-anchor="middle" fill="black" id="date">
+            <text x="500" y="410" text-anchor="middle" fill="black" id="date">
               {date}
             </text>
             <line x1="400" y1="510" x2="600" y2="510" id="titleUnderLine" />
@@ -286,7 +303,14 @@ function Demo({ title, name, date, hash, logo }) {
                 Completing Course On:
               </text>
               <line x1="30%" y1="260" x2="70%" y2="260" id="titleUnderLine" />
-              <text x="50%" y="200" textAnchor="middle" fill="black" id="title" fontWeight='bold'>
+              <text
+                x="50%"
+                y="200"
+                textAnchor="middle"
+                fill="black"
+                id="title"
+                fontWeight="bold"
+              >
                 {title}
               </text>
               <text
@@ -298,7 +322,15 @@ function Demo({ title, name, date, hash, logo }) {
               >
                 awarded to
               </text>
-              <text x="50%" y="290" textAnchor="middle" fill="black" id="name" fontSize={20} fontWeight={'bold'}>
+              <text
+                x="50%"
+                y="290"
+                textAnchor="middle"
+                fill="black"
+                id="name"
+                fontSize={20}
+                fontWeight={"bold"}
+              >
                 {name}
               </text>
               <line x1="20%" y1="410" x2="80%" y2="410" id="titleUnderLine" />
