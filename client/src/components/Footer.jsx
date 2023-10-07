@@ -55,8 +55,8 @@ const Footer = () => {
               <p>Resources</p>
               <ul className=" text-lighttextGray text-sm flex flex-col gap-3  ">
             <Link to='/user_dashboard'> <li>Courses </li> </Link> 
-            <Link to='/certificate/create'> <li>MintCertificate </li> </Link> 
-            <Link to='/certificate/view/:id'> <li>ViewCertificate </li> </Link> 
+            <Link to='/offlineCertificate'> <li>Check Your Certificate </li> </Link> 
+            <Link to='/certificate/view/651edbbc357cebd57656e539'> <li>ViewCertificate </li> </Link> 
             <Link to='/image_hasher'><li>ImageHasher </li></Link> 
               </ul>
             </div>
