@@ -46,7 +46,7 @@ const ViewCertificate = () => {
   };
 
   const config = {
-    headers: { Authorization: "Bearer c03d53b0-64ef-11ee-b226-c54d3f7a1af7" },
+    headers: { Authorization: "Bearer ab73bdb0-64c8-11ee-b157-c946b9aced4f" },
   };
   const bodyParameters = {
     colorDark: "#000000",
