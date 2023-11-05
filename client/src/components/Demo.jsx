@@ -220,7 +220,7 @@ function Demo({ title, name, date, hash, logo }) {
                 fill="black"
                 id="bodySubTitle"
               >
-                on
+                Will be Valid for Next
               </text>
               <text x="50%" y="330" textAnchor="middle" fill="black" id="date">
                 {date} Days
